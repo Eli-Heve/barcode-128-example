@@ -1,0 +1,178 @@
+body {
+  background-color: #e8eaed;
+  margin: 0;
+  padding: 20px 80px;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#scanner {
+  overflow-y: auto;
+  height: 35px;
+}
+
+#webcam-based-detector {
+  display: none;
+  width: 400px;
+  height: 400px;
+  margin-bottom: 15px;
+}
+
+.page-split {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+.side-left,
+.side-right {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.scanner-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+
+  .selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    gap: 10px;
+  }
+
+  .scanner-text-container {
+    height: 500px;
+    overflow-y: auto;
+    background-color: #dbdee4;
+    border-radius: 4px;
+    outline: solid 1px black;
+    padding: 10px;
+
+    > #scanner-text {
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+}
+
+#toast-notifications-container {
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  right: 0px;
+  top: 20px;
+  width: min(100vw, 500px);
+  max-height: calc(100vh - 20px);
+  overflow: hidden;
+  padding-bottom: 10px;
+
+  > .toast-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 110%;
+    width: 90%;
+    min-height: 50px;
+    padding-left: 20px;
+    background-color: #dbdee4;
+    border-radius: 4px;
+    outline: solid 1px black;
+    transition: margin 0.35s;
+
+    > button {
+      display: inline-flex;
+      align-items: center;
+      font-size: 20px;
+      margin-right: 10px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    &.bad {
+      border-left: 8px solid red;
+    }
+
+    &.good {
+      border-left: 8px solid green;
+    }
+  }
+}
+
+.code-128-container {
+  min-width: 500px;
+
+  > input {
+    width: 100%;
+  }
+  canvas {
+    height: 135px;
+    max-width: 100%;
+  }
+  > form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    text-wrap: nowrap;
+  }
+}
+
+.qr-code-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  > #qr-code-canvas {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .page-split {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .side-left,
+  .side-right {
+    justify-content: center;
+    align-items: center;
+  }
+  .scannerBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+
+    > * {
+      width: 400px;
+    }
+  }
+  #webcam-based-detector {
+    margin-right: 10px;
+  }
+  .scanner-container {
+    width: 100%;
+  }
+  .qr-code-container {
+    justify-content: center;
+    align-items: center;
+  }
+}
