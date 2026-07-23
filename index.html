@@ -1,126 +1,104 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Machine Readable Codes</title>
-    <link rel="stylesheet" href="/css/index.css" />
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"
-    ></script>
-    <script src="/js/toastNotifications.js" defer></script>
-    <script src="/js/scanner.js" defer></script>
-    <script src="/js/barcode.js" defer></script>
-    <script src="/js/generateBarcode.js" defer></script>
-    <script src="/js/generateQR.js" defer></script>
-  </head>
 
-  <body>
-    <div class="page-split">
-      <div class="side-left">
-        <div class="scanner-container">
-          <div class="selection">
-            <div id="toast-notifications-container"></div>
-            <label for="scanner">Choose a scanner:</label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Readable Codes</title>
+  <link rel="stylesheet" href="/barcode-128-example/css/index.css" />
+  <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+  <script src="/barcode-128-example/js/toastNotifications.js" defer></script>
+  <script src="/barcode-128-example/js/scanner.js" defer></script>
+  <script src="/barcode-128-example/js/barcode.js" defer></script>
+  <script src="/barcode-128-example/js/generateBarcode.js" defer></script>
+  <script src="/barcode-128-example/js/generateQR.js" defer></script>
+</head>
 
-            <select name="scanner" id="scanner">
-              <option value="new">New Scanner</option>
-            </select>
-            <button onclick="connect_device(event)">Connect Scanner</button>
-          </div>
-          <div class="scannerBox">
-            <video id="webcam-based-detector"></video>
-            <div class="scanner-text-container">
-              <div id="scanner-text"></div>
-            </div>
-          </div>
+<body>
+  <div class="page-split">
+    <div class="side-left">
+      <div class="scanner-container">
+        <div class="selection">
+          <div id="toast-notifications-container"></div>
+          <label for="scanner">Choose a scanner:</label>
+
+          <select name="scanner" id="scanner">
+            <option value="new">New Scanner</option>
+          </select>
+          <button onclick="connect_device(event)">Connect Scanner</button>
         </div>
-      </div>
-
-      <div class="side-right">
-        <div class="code-128-container" id="code-128-container">
-          <canvas id="code128" width="800" height="150">
-            Code 128 Barcode
-          </canvas>
-          <br />
-          <input
-            type="range"
-            id="barcode-width"
-            name="barcode-width"
-            min="8"
-            max="1"
-            step="1"
-          />
-          <br />
-          <form id="scanner-form">
-            <label required for="barcode-text">Text:</label>
-
-            <input
-              name="barcode-text"
-              type="text"
-              id="barcode-text"
-              maxlength="35"
-            />
-
-            <label for="codeType">Choose a code Type:</label>
-
-            <select name="codeType" id="codeType">
-              <option value="a">A (Numbers, Capitals, Control)</option>
-              <option value="b" selected="selected">
-                B (Numbers, Capitals, Lowercase)
-              </option>
-              <option value="c">C (Numbers)</option>
-            </select>
-
-            <label for="barColor">Choose a color:</label>
-
-            <select
-              name="barColor"
-              id="barColor"
-              onchange="checkIfDisableMarkers(event)"
-            >
-              <option value="black">Black</option>
-              <option value="green">Green</option>
-              <option value="blue">Blue</option>
-            </select>
-
-            <label for="barMarkers">Include Markers: </label>
-            <input type="checkbox" id="barMarkers" checked name="barMarkers" />
-
-            <input type="submit" />
-          </form>
-        </div>
-        <div class="qr-code-container">
-          <canvas id="qr-code-canvas" width="300" height="300">
-            qr code
-          </canvas>
-          <form id="qr-form">
-            <label required for="qr-text">Text:</label>
-
-            <input
-              name="qr-text"
-              type="text"
-              id="qr-text"
-              value="https://www.devpipeline.com"
-            />
-
-            <label for="codeVersion">Choose a code version</label>
-
-            <select name="codeVersion" id="codeVersion"></select>
-
-            <label for="codeEC">Choose error correction level</label>
-            <select name="codeEC" id="codeEC">
-              <option value="L">L: 7%</option>
-              <option value="M">M: 15%</option>
-              <option value="Q">Q: 25%</option>
-              <option value="H" selected>H: 30%</option>
-            </select>
-
-            <input type="submit" />
-          </form>
+        <div class="scannerBox">
+          <video id="webcam-based-detector"></video>
+          <div class="scanner-text-container">
+            <div id="scanner-text"></div>
+          </div>
         </div>
       </div>
     </div>
-  </body>
+
+    <div class="side-right">
+      <div class="code-128-container" id="code-128-container">
+        <canvas id="code128" width="800" height="150">
+          Code 128 Barcode
+        </canvas>
+        <br />
+        <input type="range" id="barcode-width" name="barcode-width" min="8" max="1" step="1" />
+        <br />
+        <form id="scanner-form">
+          <label required for="barcode-text">Text:</label>
+
+          <input name="barcode-text" type="text" id="barcode-text" maxlength="35" />
+
+          <label for="codeType">Choose a code Type:</label>
+
+          <select name="codeType" id="codeType">
+            <option value="a">A (Numbers, Capitals, Control)</option>
+            <option value="b" selected="selected">
+              B (Numbers, Capitals, Lowercase)
+            </option>
+            <option value="c">C (Numbers)</option>
+          </select>
+
+          <label for="barColor">Choose a color:</label>
+
+          <select name="barColor" id="barColor" onchange="checkIfDisableMarkers(event)">
+            <option value="black">Black</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+          </select>
+
+          <label for="barMarkers">Include Markers: </label>
+          <input type="checkbox" id="barMarkers" checked name="barMarkers" />
+
+          <input type="submit" />
+        </form>
+      </div>
+      <div class="qr-code-container">
+        <canvas id="qr-code-canvas" width="300" height="300">
+          qr code
+        </canvas>
+        <form id="qr-form">
+          <label required for="qr-text">Text:</label>
+
+          <input name="qr-text" type="text" id="qr-text" value="https://www.devpipeline.com" />
+
+          <label for="codeVersion">Choose a code version</label>
+
+          <select name="codeVersion" id="codeVersion"></select>
+
+          <label for="codeEC">Choose error correction level</label>
+          <select name="codeEC" id="codeEC">
+            <option value="L">L: 7%</option>
+            <option value="M">M: 15%</option>
+            <option value="Q">Q: 25%</option>
+            <option value="H" selected>H: 30%</option>
+          </select>
+
+          <input type="submit" />
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
