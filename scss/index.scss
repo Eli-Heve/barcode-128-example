@@ -58,7 +58,7 @@ body {
     outline: solid 1px black;
     padding: 10px;
 
-    > #scanner-text {
+    >#scanner-text {
       display: flex;
       flex-direction: column-reverse;
       width: 100%;
@@ -78,7 +78,7 @@ body {
   overflow: hidden;
   padding-bottom: 10px;
 
-  > .toast-message {
+  >.toast-message {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -91,7 +91,7 @@ body {
     outline: solid 1px black;
     transition: margin 0.35s;
 
-    > button {
+    >button {
       display: inline-flex;
       align-items: center;
       font-size: 20px;
@@ -114,14 +114,16 @@ body {
 .code-128-container {
   min-width: 500px;
 
-  > input {
+  >input {
     width: 100%;
   }
+
   canvas {
     height: 135px;
     max-width: 100%;
   }
-  > form {
+
+  >form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -134,7 +136,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  > #qr-code-canvas {
+  >#qr-code-canvas {
     width: 300px;
     height: 300px;
     margin-bottom: 10px;
@@ -148,11 +150,13 @@ body {
     justify-content: center;
     align-items: center;
   }
+
   .side-left,
   .side-right {
     justify-content: center;
     align-items: center;
   }
+
   .scannerBox {
     display: flex;
     flex-direction: row;
@@ -161,18 +165,41 @@ body {
     flex-wrap: wrap;
     width: 100%;
 
-    > * {
+    >* {
       width: 400px;
     }
   }
+
   #webcam-based-detector {
     margin-right: 10px;
   }
+
   .scanner-container {
     width: 100%;
   }
+
   .qr-code-container {
     justify-content: center;
     align-items: center;
+  }
+}
+
+
+@media (max-width: 570px) {
+
+  .scanner-text-container,
+  .code-128-container {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .qr-code-container>canvas#qr-code-canvas,
+  #webcam-based-detector {
+    width: min(80dvw, 80dvh);
+    height: min(80dvw, 80dvh);
+  }
+
+  body {
+    padding: 10px;
   }
 }

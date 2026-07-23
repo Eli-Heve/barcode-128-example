@@ -166,3 +166,18 @@ body {
     align-items: center;
   }
 }
+@media (max-width: 570px) {
+  .scanner-text-container,
+  .code-128-container {
+    width: 100%;
+    min-width: 0;
+  }
+  .qr-code-container > canvas#qr-code-canvas,
+  #webcam-based-detector {
+    width: min(80dvw, 80dvh);
+    height: min(80dvw, 80dvh);
+  }
+  body {
+    padding: 10px;
+  }
+}
